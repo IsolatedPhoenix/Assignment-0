@@ -1,0 +1,169 @@
+---
+title: "Assignment0"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+##Name: Mohamed Ali Slim
+##Username: IsolatedPhoenix
+##Document: [link](https://cran.r-project.org/doc/contrib/Torfs+Brauer-Short-R-Intro.pdf)
+
+##Abstract
+In this assignment, we are displaying basic applications and my ability to complete them correctly using R programming. There are 14 ToDo's plus a final extra Todo requested to be done that are found in the document linked above and the results with their code can be found below.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+###3.1 - Calculator
+
+```{r calc}
+((2018-2015)/(2018-1997))*100
+```
+
+###3.2 - Workspace
+
+```{r work}
+ysu=2018-2015
+ysa=2018-1997
+a=ysu/ysa
+a=a*100
+a
+```
+
+###3.4 - Functions
+
+```{r func}
+a=c(4,5,6,11)
+sum(a)
+```
+
+###3.5 - Plots
+
+```{r plot}
+x=rnorm(100)
+plot(x)
+```
+
+###4 - Help & Documentation
+
+```{r help}
+help(sqrt)
+```
+
+###5 - Scripts
+
+```{r script}
+
+file.create("firstscript.R")
+x=rnorm(100)
+plot(x)
+source("firstscript.R")
+```
+
+###6.2 - Matrices
+
+```{r mat}
+p = 31:60
+Q = matrix(data=p, nrow = 6, ncol = 5)
+Q
+```
+
+###6.3 - Data Frames
+
+```{r data}
+x1=rnorm(100)
+x2=rnorm(100)
+x3=rnorm(100)
+t=data.frame(a=x1, b=x1+x2, c=x1+x2+x3)
+plot(t)
+```
+
+###7 - Graphics
+
+```{r graphics}
+x1=rnorm(100)
+x2=rnorm(100)
+x3=rnorm(100)
+t=data.frame(a=x1, b=x1+x2, c=x1+x2+x3)
+plot(t$a, type="l", ylim=range(t), lwd=3, col=rgb(1,0,0,0.3))
+lines(t$b, type="s",lwd=2, col=rgb(0.3,0.4,0.3,0.9))
+points(t$c, pch=20, cex=4, col=rgb(0,0,1,0.3))
+?rgb
+```
+
+###8 - R&W data Files
+
+```{r file}
+a=read.table("tst1.txt", header=TRUE)
+write.table(a$g*5, file = "tst2.txt", row.names = FALSE)
+```
+
+###9 - not available data
+
+```{r nope}
+mean(sqrt(rnorm(100)))
+```
+
+###10.2 - dates
+
+```{r dates}
+x = c(strptime(c("20180202", "20181221","20180808"),format="%Y%m%d"))
+y = c(1,6,3)
+plot(x,y, xlab = "Date",ylab="presents",main = "How gifted I am")
+```
+
+###11.2 - For Loop
+
+```{r for}
+a=seq(from=1, to=100)
+s=c()
+
+for(i in 1:100)
+  {
+  if(a[i]<5 | a[i]>90)
+    {
+      s[i]=a[i]*10
+  }else{
+      s[i]=a[i]*.1
+    }
+  }
+s
+```
+
+###11.3 - Writing your own function
+
+```{r arg}
+p=1:100
+fun1 <- function(arg) 
+{
+s=c()
+for(i in 1:length(arg))
+  {
+  if(arg[i]<5 | a[i]>90)
+    {
+      s[i]=arg[i]*10
+  }else{
+      s[i]=arg[i]*.1
+    }
+  }  
+return(s)  
+}
+fun1(p)
+```
+
+###FINAL TODO
+
+```{r note}
+p=1:100
+
+fun2 <- function(a)
+{
+b=(a[a <5 | a >90])*10
+c=(a[a<=90 & a>=5])*.1
+s=c(b,c)
+return(s)  
+}
+fun2(p)
+```
